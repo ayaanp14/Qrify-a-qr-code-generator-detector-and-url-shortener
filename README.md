@@ -1,0 +1,1 @@
+# Qrify-a-qr-code-generator-detector-and-url-shortener
