@@ -1,0 +1,26 @@
+{
+    "name": "qr-url-app",
+    "version": "1.0.0",
+    "description": "QR Code Generator, Scanner and URL Shortener",
+    "main": "src/server/app.js",
+    "scripts": {
+        "start": "node src/server/app.js",
+        "dev": "nodemon src/server/app.js",
+        "client": "cd public && live-server --port=3000",
+        "build": "echo \"Build process would go here\""
+    },
+    "dependencies": {
+        "cors": "^2.8.5",
+        "express": "^4.18.2",
+        "jsqr": "^1.4.0",
+        "mysql2": "^3.6.0",
+        "qrcode": "^1.5.4",
+        "sequelize": "^6.35.1",
+        "shortid": "^2.2.16",
+        "valid-url": "^1.0.9"
+    },
+    "devDependencies": {
+        "live-server": "^1.2.0",
+        "nodemon": "^3.1.10"
+    }
+}

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QRGenius | QR Code & URL Shortener</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+   
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar container">
+            <a href="#" class="logo">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 11H21V13H3V11Z" fill="currentColor"/>
+                    <path d="M11 3V21H13V3H11Z" fill="currentColor"/>
+                </svg>
+                QRify
+            </a>
+            <ul class="nav-links">
+                <li><a href="#generator">Generator</a></li>
+                <li><a href="#scanner">Scanner</a></li>
+                <li><a href="#shortener">URL Shortener</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="animate__animated animate__fadeInDown">QR Code Generator & URL Shortener</h1>
+            <p class="animate__animated animate__fadeInUp">Create custom QR codes in seconds and shorten long URLs with our easy-to-use tools</p>
+            
+            <div class="tabs animate__animated animate__fadeIn">
+                <button class="tab-btn active" data-tab="generator">QR Generator</button>
+                <button class="tab-btn" data-tab="scanner">QR Scanner</button>
+                <button class="tab-btn" data-tab="shortener">URL Shortener</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- QR Generator Tab -->
+        <div id="generator" class="tab-content active">
+            <div class="card animate__animated animate__fadeInUp">
+                <h2 class="card-title">Generate QR Code</h2>
+                <div class="form-group">
+                    <label for="qrText">Text or URL</label>
+                    <input type="text" id="qrText" class="form-control" placeholder="Enter text or URL">
+                </div>
+                <div class="form-group">
+                    <label for="qrSize">Size (px)</label>
+                    <input type="number" id="qrSize" class="form-control" value="200" min="100" max="1000">
+                </div>
+                <div class="form-group">
+                    <label for="qrColor">Color</label>
+                    <input type="color" id="qrColor" class="form-control" value="#000000">
+                </div>
+                <div class="form-group">
+                    <label for="qrBgColor">Background Color</label>
+                    <input type="color" id="qrBgColor" class="form-control" value="#ffffff">
+                </div>
+                <button id="generateQR" class="btn">Generate QR Code</button>
+                <button id="downloadQR" class="btn btn-secondary" style="display: none;">Download QR Code</button>
+        
+                <!-- Loader -->
+                <div id="loader" style="display: none;">Generating QR Code...</div>
+        
+                <div class="qr-result">
+                    <!-- Change div to canvas here -->
+                    <canvas id="qrCode"></canvas>
+                </div>
+            </div>
+        </div>
+        
+
+        <!-- QR Scanner Tab -->
+        <div id="scanner" class="tab-content">
+            <div class="card animate__animated animate__fadeInUp">
+                <h2 class="card-title">Scan QR Code</h2>
+        
+                <!-- Upload Option -->
+                <div style="margin-bottom: 10px;">
+                    <input type="file" id="qrUpload" accept="image/*" />
+                </div>
+        
+                <!-- Webcam Scanner -->
+                <div class="scanner-container">
+                    <video id="scannerVideo" autoplay playsinline></video>
+                    <canvas id="qrCanvas" hidden></canvas>
+                    <div class="scanner-overlay"></div>
+                </div>
+        
+                <!-- Scan Result -->
+                <div class="scan-result">
+                    <p>Scanned Result: <span id="scanResult">No QR code detected</span></p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- QR Code Scanner Library -->
+        <script src="https://unpkg.com/jsqr/dist/jsQR.js"></script>
+        
+
+        <!-- URL Shortener Tab -->
+        <div id="shortener" class="tab-content">
+            <div class="card animate__animated animate__fadeInUp">
+                <h2 class="card-title">URL Shortener</h2>
+                <div class="form-group">
+                    <label for="longUrl">Long URL</label>
+                    <input type="url" id="longUrl" class="form-control" placeholder="Enter URL to shorten">
+                </div>
+                <div class="form-group">
+                    <label for="customAlias">Custom Alias (optional)</label>
+                    <input type="text" id="customAlias" class="form-control" placeholder="my-custom-link">
+                </div>
+                <button id="shortenBtn" class="btn">Shorten URL</button>
+                
+                <div id="urlResult" class="url-result"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right: 10px;">
+                        <path d="M3 11H21V13H3V11Z" fill="currentColor"/>
+                        <path d="M11 3V21H13V3H11Z" fill="currentColor"/>
+                    </svg>
+                    QRify
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+                <p class="copyright">© 2025 QRify. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+    <script src="assets/js/qrcode.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/url-shortener.js"></script>
+    <script src="https://unpkg.com/jsqr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.js"></script>
+    
+</body>
+</html>
